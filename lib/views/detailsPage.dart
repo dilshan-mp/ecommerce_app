@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -155,9 +156,25 @@ class _DetailsPageState extends State<DetailsPage> {
                   height: 46,
                   margin: const EdgeInsets.only(top: 28.9),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(
+                                  0.5), // Shadow color with some opacity
+                              spreadRadius:
+                                  2, // How wide the shadow will spread
+                              blurRadius: 5, // The blur effect for the shadow
+                              offset: Offset(
+                                  0, 3), // The position of the shadow (x, y)
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(
+                              5), // Optional: if you want rounded corners
+                        ),
                         width: 90,
                         height: 25,
                         child: Row(
@@ -194,14 +211,64 @@ class _DetailsPageState extends State<DetailsPage> {
                               child: Center(
                                 child: IconButton(
                                   onPressed: () {},
-                                  icon: Icon(Icons.add),
+                                  icon: const Icon(Icons.add),
                                   padding: EdgeInsets.zero,
                                 ),
                               ),
                             ),
                           ],
                         ),
+                      ),
+                      Container(
+                        width: 46,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF1F4FB),
+                          borderRadius: BorderRadius.circular(360),
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.upload),
+                        ),
                       )
+                    ],
+                  ),
+                ),
+                Container(
+                  color: Colors.red,
+                  width: 349,
+                  height: 103,
+                  margin: const EdgeInsets.only(top: 26),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        color: Colors.blue,
+                        width: 75,
+                        height: 24,
+                        child: const Text(
+                          "DESCRIPTION",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w800,
+                              height: 2.4),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          color: Colors.pink,
+                          width: 348,
+                          height: 78,
+                          child: const Text(
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...detail',
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                height: 1.5),
+                          ),
+                        ),
+                      ),
+                      Container()
                     ],
                   ),
                 )
