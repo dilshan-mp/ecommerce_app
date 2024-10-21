@@ -114,7 +114,13 @@ class _PopularPageState extends State<PopularPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const DetailsPage(),
+                            builder: (context) => DetailsPage(
+                              image: item?['image'],
+                              title: item?['title'],
+                              description: item?['description'],
+                              price: item?['price'],
+                              category: item?['category'],
+                            ),
                           ),
                         );
                       },
