@@ -25,7 +25,9 @@ class _DetailsPageState extends State<DetailsPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 78, left: 30),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(Icons.arrow_back),
                 ),
               ),
@@ -56,7 +58,7 @@ class _DetailsPageState extends State<DetailsPage> {
               right: 115,
             ),
             decoration: BoxDecoration(
-              color: Colors.amber,
+              //color: Colors.amber,
               borderRadius: BorderRadius.circular(59),
             ),
             child: ClipRRect(
@@ -74,7 +76,7 @@ class _DetailsPageState extends State<DetailsPage> {
             height: 629,
             margin: const EdgeInsets.only(top: 319),
             decoration: const BoxDecoration(
-              color: Colors.amber,
+              //color: Colors.amber,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -83,7 +85,7 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Column(
               children: [
                 Container(
-                  color: Colors.blue,
+                  //color: Colors.blue,
                   width: 371,
                   height: 71.1,
                   margin: const EdgeInsets.only(
@@ -92,7 +94,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   child: Row(
                     children: [
                       Container(
-                        color: Colors.red,
+                        //color: Colors.red,
                         width: 228,
                         height: 71.1,
                         child: Column(
@@ -108,7 +110,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               ),
                             ),
                             Container(
-                              color: Colors.white,
+                              //color: Colors.white,
                               width: 228,
                               height: 27,
                               child: Image.asset(
@@ -123,7 +125,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         width: 45,
                       ),
                       Container(
-                        color: Colors.red,
+                        //color: Colors.red,
                         width: 98,
                         height: 71.1,
                         child: const Row(
@@ -151,7 +153,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 Container(
-                  color: Colors.red,
+                  //color: Colors.red,
                   width: 349,
                   height: 46,
                   margin: const EdgeInsets.only(top: 28.9),
@@ -223,7 +225,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF1F4FB),
+                          color: Color.fromARGB(255, 224, 226, 231),
                           borderRadius: BorderRadius.circular(360),
                         ),
                         child: IconButton(
@@ -235,7 +237,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 Container(
-                  color: Colors.red,
+                  //color: Colors.red,
                   width: 349,
                   height: 103,
                   margin: const EdgeInsets.only(top: 26),
@@ -243,7 +245,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        color: Colors.blue,
+                        //color: Colors.blue,
                         width: 75,
                         height: 24,
                         child: const Text(
@@ -256,7 +258,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                       Expanded(
                         child: Container(
-                          color: Colors.pink,
+                          //color: Colors.pink,
                           width: 348,
                           height: 78,
                           child: const Text(
@@ -268,8 +270,162 @@ class _DetailsPageState extends State<DetailsPage> {
                           ),
                         ),
                       ),
-                      Container()
                     ],
+                  ),
+                ),
+                Container(
+                  //color: Colors.red,
+                  width: 280,
+                  height: 77,
+                  margin: const EdgeInsets.only(
+                    top: 30,
+                    right: 104,
+                    left: 30,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        //color: Colors.blue,
+                        width: 75,
+                        height: 24,
+                        child: const Center(
+                          child: Text(
+                            'SELECT SIZE',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, fontSize: 10),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(6),
+                              ),
+                              color: Colors.blue,
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'S',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(6),
+                              ),
+                              color: Color(0xFFF1F4FB),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'M',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(6),
+                              ),
+                              color: Color(0xFFF1F4FB),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'L',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(6),
+                              ),
+                              color: Color(0xFFF1F4FB),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'XL',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(6),
+                              ),
+                              color: Color(0xFFF1F4FB),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'XXL',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  // Outer container color
+                  width: 354,
+                  height: 54,
+                  margin: EdgeInsets.only(top: 45, left: 30, right: 30),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Add your button functionality here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(
+                          0xFF6342E8), // Change the button color to white (or any color you prefer)
+                      // Optional: you can set the elevation here
+                      elevation:
+                          0, // Set elevation to 0 if you want a flat button appearance
+                    ),
+                    child: Text(
+                      'ADD TO CART',
+                      style: TextStyle(
+                        color: Colors.white, // Text color
+                      ),
+                    ),
                   ),
                 )
               ],
