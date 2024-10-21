@@ -96,7 +96,26 @@ class _DetailsPageState extends State<DetailsPage> {
                         height: 71.1,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [Text('Geeta Mens')],
+                          children: [
+                            Text('Geeta Mens'),
+                            Text(
+                              'Purple Hoodie',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w900,
+                                height: 1,
+                              ),
+                            ),
+                            Container(
+                              color: Colors.white,
+                              width: 228,
+                              height: 27,
+                              child: Image.asset(
+                                'assets/images/Rating.png',
+                                alignment: Alignment.topLeft,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       SizedBox(
@@ -106,6 +125,24 @@ class _DetailsPageState extends State<DetailsPage> {
                         color: Colors.red,
                         width: 98,
                         height: 71.1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '\$48',
+                              style: TextStyle(
+                                  fontSize: 24, fontWeight: FontWeight.w900),
+                            ),
+                            SizedBox(
+                              width: 1,
+                            ),
+                            Text(
+                              'USD',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
