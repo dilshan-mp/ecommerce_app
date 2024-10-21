@@ -125,7 +125,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         color: Colors.red,
                         width: 98,
                         height: 71.1,
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -139,8 +139,66 @@ class _DetailsPageState extends State<DetailsPage> {
                             Text(
                               'USD',
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w400),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
                             )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  color: Colors.red,
+                  width: 349,
+                  height: 46,
+                  margin: const EdgeInsets.only(top: 28.9),
+                  child: Row(
+                    children: [
+                      Container(
+                        color: Colors.white,
+                        width: 90,
+                        height: 25,
+                        child: Row(
+                          children: [
+                            Container(
+                              //color: Colors.amber,
+                              width: 30,
+                              height: 25,
+                              child: Center(
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.remove),
+                                  padding: EdgeInsets.zero,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              //color: Colors.amber,
+                              width: 30,
+                              height: 25,
+                              child: const Center(
+                                child: Text(
+                                  '1',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              //color: Colors.amber,
+                              width: 30,
+                              height: 25,
+                              child: Center(
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.add),
+                                  padding: EdgeInsets.zero,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       )
