@@ -1,10 +1,19 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({super.key});
+  final String? title;
+  final dynamic price;
+  final String? description;
+  final String? image;
+  final String? category;
+
+  const DetailsPage(
+      {super.key,
+      this.title,
+      this.price,
+      this.description,
+      this.image,
+      this.category});
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -13,6 +22,9 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
+    double priceValue = (widget.price is int)
+        ? (widget.price as int).toDouble()
+        : (widget.price ?? 0);
     return Scaffold(
       body: Stack(
         children: [
@@ -65,7 +77,7 @@ class _DetailsPageState extends State<DetailsPage> {
               borderRadius:
                   BorderRadius.circular(59), // Matches container's borderRadius
               child: Image.network(
-                'https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg',
+                widget.image ?? 'https://via.placeholder.com/150',
                 fit:
                     BoxFit.cover, // Ensures the image fits within the container
               ),
@@ -100,8 +112,8 @@ class _DetailsPageState extends State<DetailsPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Geeta Mens'),
-                            Text(
+                            Text(widget.category ?? "no category"),
+                            const Text(
                               'Purple Hoodie',
                               style: TextStyle(
                                 fontSize: 24,
@@ -128,18 +140,18 @@ class _DetailsPageState extends State<DetailsPage> {
                         //color: Colors.red,
                         width: 98,
                         height: 71.1,
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '\$48',
-                              style: TextStyle(
+                              '\$${priceValue}',
+                              style: const TextStyle(
                                   fontSize: 24, fontWeight: FontWeight.w900),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 1,
                             ),
-                            Text(
+                            const Text(
                               'USD',
                               style: TextStyle(
                                 fontSize: 14,
@@ -261,8 +273,8 @@ class _DetailsPageState extends State<DetailsPage> {
                           //color: Colors.pink,
                           width: 348,
                           height: 78,
-                          child: const Text(
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...detail',
+                          child: Text(
+                            widget.description ?? 'no description',
                             style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
