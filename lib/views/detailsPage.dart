@@ -17,7 +17,25 @@ class _DetailsPageState extends State<DetailsPage> {
           Container(
             color: const Color(0xFFF1F4FB),
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back),)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 78, left: 30),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.arrow_back),
+                ),
+              ),
+              Container(
+                color: const Color(
+                  0xFFFFFFFF,
+                ),
+                width: 46,
+                height: 46,
+              )
+            ],
+          ),
         ],
       ),
     );
