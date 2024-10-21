@@ -106,7 +106,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                   child: Row(
                     children: [
-                      Container(
+                      SizedBox(
                         //color: Colors.red,
                         width: 228,
                         height: 71.1,
@@ -114,15 +114,19 @@ class _DetailsPageState extends State<DetailsPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(widget.category ?? "no category"),
-                            const Text(
-                              'Purple Hoodie',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
-                                height: 1,
+                            Flexible(
+                              child: Text(
+                                widget.title ?? "No title",
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900,
+                                  height: 1,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               //color: Colors.white,
                               width: 228,
                               height: 27,
@@ -134,20 +138,25 @@ class _DetailsPageState extends State<DetailsPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 45,
                       ),
-                      Container(
-                        //color: Colors.red,
+                      SizedBox(
                         width: 98,
                         height: 71.1,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '\$${priceValue}',
-                              style: const TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.w900),
+                            Expanded(
+                              child: Text(
+                                '\$$priceValue',
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                             const SizedBox(
                               width: 1,
@@ -183,7 +192,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               spreadRadius:
                                   2, // How wide the shadow will spread
                               blurRadius: 5, // The blur effect for the shadow
-                              offset: Offset(
+                              offset: const Offset(
                                   0, 3), // The position of the shadow (x, y)
                             ),
                           ],
@@ -194,7 +203,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         height: 25,
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                               //color: Colors.amber,
                               width: 30,
                               height: 25,
@@ -206,11 +215,11 @@ class _DetailsPageState extends State<DetailsPage> {
                                 ),
                               ),
                             ),
-                            Container(
+                            const SizedBox(
                               //color: Colors.amber,
                               width: 30,
                               height: 25,
-                              child: const Center(
+                              child: Center(
                                 child: Text(
                                   '1',
                                   style: TextStyle(
@@ -219,7 +228,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 ),
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               //color: Colors.amber,
                               width: 30,
                               height: 25,
@@ -238,12 +247,12 @@ class _DetailsPageState extends State<DetailsPage> {
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 224, 226, 231),
+                          color: const Color.fromARGB(255, 224, 226, 231),
                           borderRadius: BorderRadius.circular(360),
                         ),
                         child: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.upload),
+                          icon: const Icon(Icons.upload),
                         ),
                       )
                     ],
@@ -257,11 +266,11 @@ class _DetailsPageState extends State<DetailsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      const SizedBox(
                         //color: Colors.blue,
                         width: 75,
                         height: 24,
-                        child: const Text(
+                        child: Text(
                           "DESCRIPTION",
                           style: TextStyle(
                               fontSize: 10,
@@ -270,13 +279,13 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                       ),
                       Expanded(
-                        child: Container(
+                        child: SizedBox(
                           //color: Colors.pink,
                           width: 348,
                           height: 78,
                           child: Text(
                             widget.description ?? 'no description',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                                 height: 1.5),
@@ -298,11 +307,11 @@ class _DetailsPageState extends State<DetailsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      const SizedBox(
                         //color: Colors.blue,
                         width: 75,
                         height: 24,
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             'SELECT SIZE',
                             style: TextStyle(
@@ -418,16 +427,21 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 Container(
-                  // Outer container color
                   width: 354,
                   height: 54,
-                  margin: EdgeInsets.only(top: 45, left: 30, right: 30),
+                  margin: const EdgeInsets.only(top: 45, left: 30, right: 30),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyCartPage()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyCartPage(
+                            image: widget.image,
+                            title: widget.title,
+                            price: widget.price,
+                          ),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF6342E8),

@@ -2,19 +2,38 @@ import 'package:flutter/material.dart';
 
 class MyCartPage extends StatefulWidget {
   final String? image;
-  const MyCartPage({super.key, this.image});
+  final String? title;
+  final dynamic price; // Changed to dynamic
+
+  const MyCartPage({
+    super.key,
+    this.image,
+    this.title,
+    this.price,
+  });
 
   @override
   State<MyCartPage> createState() => _MyCartPageState();
 }
 
 class _MyCartPageState extends State<MyCartPage> {
+  int quantity = 1; // Initialize quantity
+
   @override
   Widget build(BuildContext context) {
+    // Ensure price is formatted correctly
+    String formattedPrice = widget.price != null
+        ? (widget.price is int
+            ? '\$${(widget.price as int).toString()}'
+            : '\$${(widget.price as double).toStringAsFixed(2)}')
+        : '\$0.00'; // Default value if price is null
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(Icons.arrow_back),
         ),
         title: const Text(
@@ -29,14 +48,13 @@ class _MyCartPageState extends State<MyCartPage> {
         itemCount: 1,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            color: Color(0xFFF1F4FB),
+            color: const Color(0xFFF1F4FB),
             width: 354,
             height: 146,
-            margin: EdgeInsets.only(left: 30, right: 30),
+            margin: const EdgeInsets.only(left: 30, right: 30),
             child: Row(
               children: [
                 Container(
-                  color: Colors.amber,
                   width: 87,
                   height: 77,
                   margin: const EdgeInsets.only(
@@ -45,28 +63,36 @@ class _MyCartPageState extends State<MyCartPage> {
                     bottom: 47,
                   ),
                   child: Image.network(
-                    'https://plus.unsplash.com/premium_photo-1675186049366-64a655f8f537?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhlc3xlbnwwfHwwfHx8MA%3D%3D',
+                    widget.image ??
+                        'https://via.placeholder.com/150', // Using the passed image
                     fit: BoxFit.cover,
                   ),
                 ),
-                const Column(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 30, left: 13),
-                      child: Text(
-                        'Printed Shirt',
-                        style: TextStyle(
+                      padding: const EdgeInsets.only(top: 30, left: 13),
+                      child: Expanded(
+                        child: Text(
+                          widget.title ??
+                              'Product Title', // Using the passed title
+                          style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w900,
-                            color: Color(0xFF6342E8)),
+                            color: Color(0xFF6342E8),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(top: 8, left: 13),
                       child: Text(
                         'GEETA COLLECTION',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 9,
                           fontWeight: FontWeight.w900,
                           color: Color(0xFFA1A1A1),
                         ),
@@ -74,18 +100,19 @@ class _MyCartPageState extends State<MyCartPage> {
                     ),
                     Row(
                       children: [
-                        Text(
-                          '\$48',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w900,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                            formattedPrice,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
                         ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
+                        const SizedBox(width: 2),
+                        const Text(
                           'USD',
                           style: TextStyle(
                             fontSize: 14,
@@ -94,10 +121,82 @@ class _MyCartPageState extends State<MyCartPage> {
                           ),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
-                //IconButton(onPressed: (){}, icon: Icon())
+                SizedBox(
+                  width: 115,
+                  height: 146,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 5,
+                          left: 60,
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            // Handle item removal
+                          },
+                          icon: const Icon(Icons.cancel_presentation_rounded),
+                        ),
+                      ),
+                      Container(
+                        color: const Color(0xFFD3D3D3),
+                        width: 82,
+                        height: 25,
+                        margin: const EdgeInsets.only(
+                          top: 68,
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 27.33,
+                              height: 25,
+                              child: IconButton(
+                                onPressed: () {
+                                  if (quantity > 1) {
+                                    setState(() {
+                                      quantity--; // Decrease quantity
+                                    });
+                                  }
+                                },
+                                icon: const Icon(Icons.remove),
+                                padding: EdgeInsets.zero,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 27.33,
+                              height: 25,
+                              child: Center(
+                                child: Text(
+                                  quantity.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 27.33,
+                              height: 25,
+                              child: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    quantity++; // Increase quantity
+                                  });
+                                },
+                                icon: const Icon(Icons.add),
+                                padding: EdgeInsets.zero,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           );
