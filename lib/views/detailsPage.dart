@@ -33,6 +33,10 @@ class _DetailsPageState extends State<DetailsPage> {
                 ),
                 width: 46,
                 height: 46,
+                margin: const EdgeInsets.only(
+                  top: 78,
+                  right: 30,
+                ),
               )
             ],
           ),
