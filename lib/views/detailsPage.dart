@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/views/mycart.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -423,19 +424,19 @@ class _DetailsPageState extends State<DetailsPage> {
                   margin: EdgeInsets.only(top: 45, left: 30, right: 30),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Add your button functionality here
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyCartPage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(
-                          0xFF6342E8), // Change the button color to white (or any color you prefer)
-                      // Optional: you can set the elevation here
-                      elevation:
-                          0, // Set elevation to 0 if you want a flat button appearance
+                      backgroundColor: const Color(0xFF6342E8),
+                      elevation: 0,
                     ),
-                    child: Text(
+                    child: const Text(
                       'ADD TO CART',
                       style: TextStyle(
-                        color: Colors.white, // Text color
+                        color: Colors.white,
                       ),
                     ),
                   ),
