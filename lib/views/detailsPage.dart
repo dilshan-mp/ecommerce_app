@@ -147,7 +147,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               child: Text(
                                 '\$${cartModel.totalPrice.toStringAsFixed(2)}',
                                 style: const TextStyle(
-                                  fontSize: 24,
+                                  fontSize: 17,
                                   fontWeight: FontWeight.w900,
                                 ),
                                 maxLines: 2,
