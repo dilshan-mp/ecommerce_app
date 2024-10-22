@@ -273,7 +273,7 @@ class CheckOutPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SuccessPage(),
+                  builder: (context) => const SuccessPage(),
                 ),
               );
             },

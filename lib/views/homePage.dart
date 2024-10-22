@@ -25,6 +25,15 @@ class _MyHomePageState extends State<MyHomePage> {
       length: _tabs.length,
       child: Scaffold(
         appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Container(
+              //color: Colors.amber,
+              width: 71,
+              height: 20,
+              child: Image.asset('assets/images/Geeta..png'),
+            ),
+          ),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 10),

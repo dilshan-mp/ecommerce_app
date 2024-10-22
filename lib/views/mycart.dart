@@ -146,7 +146,20 @@ class _MyCartPageState extends State<MyCartPage> {
                               ),
                               const Spacer(),
                               Container(
-                                color: const Color(0xFFD3D3D3),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(
+                                        0.5,
+                                      ),
+                                      spreadRadius: 1,
+                                      blurRadius: 5,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
                                 width: 80,
                                 height: 25,
                                 margin: const EdgeInsets.only(bottom: 10),
@@ -198,7 +211,7 @@ class _MyCartPageState extends State<MyCartPage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
-                margin: EdgeInsets.only(bottom: 30),
+                margin: const EdgeInsets.only(bottom: 30),
                 buttonText: "GO TO CHECKOUT",
                 onPressed: () {
                   Navigator.push(
