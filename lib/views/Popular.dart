@@ -69,7 +69,7 @@ class _PopularPageState extends State<PopularPage> {
                     'assets/images/Grid View.png',
                     width: 18,
                     height: 18,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -173,7 +173,7 @@ class _PopularPageState extends State<PopularPage> {
                                       ),
                                       child: Image.network(
                                         item?['image'] ?? '',
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.fill,
                                       ),
                                     )
                                   ],
