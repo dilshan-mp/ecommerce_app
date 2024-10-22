@@ -195,16 +195,20 @@ class _MyCartPageState extends State<MyCartPage> {
                 },
               ),
             ),
-            CustomButton(
-              buttonText: "GO TO CHECKOUT",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CheckOutPage(),
-                  ),
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomButton(
+                margin: EdgeInsets.only(bottom: 30),
+                buttonText: "GO TO CHECKOUT",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CheckOutPage(),
+                    ),
+                  );
+                },
+              ),
             )
           ],
         ));

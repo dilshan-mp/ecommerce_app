@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;
+  final EdgeInsetsGeometry margin;
 
   const CustomButton({
     super.key,
     required this.buttonText,
     required this.onPressed,
+    this.margin =
+        const EdgeInsets.only(top: 40, left: 30, right: 30, bottom: 23),
   });
 
   @override
@@ -15,12 +18,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       width: 354,
       height: 54,
-      margin: const EdgeInsets.only(
-        top: 40,
-        left: 30,
-        right: 30,
-        bottom: 23,
-      ),
+      margin: margin,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
