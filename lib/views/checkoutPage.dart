@@ -226,35 +226,36 @@ class CheckOutPage extends StatelessWidget {
                           right: 5,
                         ), // Padding for space between label and text field
                         child: Container(
-                            width: 166, // Set width to 166 pixels
-                            height: 48, // Set height to 48 pixels
-                            decoration: BoxDecoration(
-                              color: Colors.white, // Background color
-                              borderRadius: const BorderRadius.all(
-                                  Radius.circular(8)), // Border radius
-                              border: Border.all(
-                                color: const Color(0xFFD2D2D2), // Border color
-                                width: 1, // Border width
-                              ),
+                          width: 166, // Set width to 166 pixels
+                          height: 48, // Set height to 48 pixels
+                          decoration: BoxDecoration(
+                            color: Colors.white, // Background color
+                            borderRadius: const BorderRadius.all(
+                                Radius.circular(8)), // Border radius
+                            border: Border.all(
+                              color: const Color(0xFFD2D2D2), // Border color
+                              width: 1, // Border width
                             ),
-                            child: Stack(
-                              alignment: Alignment.centerRight,
-                              children: [
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    border: InputBorder.none, // No border shown
-                                    contentPadding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            10), // Padding inside the text field
-                                    hintText: '474', // Placeholder text
-                                  ),
+                          ),
+                          child: Stack(
+                            alignment: Alignment.centerRight,
+                            children: [
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none, // No border shown
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          10), // Padding inside the text field
+                                  hintText: '474', // Placeholder text
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset('assets/images/Hint.png'),
-                                )
-                              ],
-                            )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset('assets/images/Hint.png'),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
