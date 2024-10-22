@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_app/statemanagement/favouriteProvider.dart';
-import 'package:ecommerce_app/statemanagement/provider/cart_model.dart';
+import 'package:ecommerce_app/statemanagement/provider/cart_provider.dart';
 import 'package:ecommerce_app/views/firstPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

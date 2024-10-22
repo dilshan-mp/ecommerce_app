@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/statemanagement/provider/cart_model.dart';
+import 'package:ecommerce_app/statemanagement/provider/cart_provider.dart';
 import 'package:ecommerce_app/views/mycart.dart';
 import 'package:ecommerce_app/widgets/customButton.dart';
 import 'package:flutter/material.dart';
