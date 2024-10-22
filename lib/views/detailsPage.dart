@@ -441,6 +441,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                     );
                   },
+                  margin: EdgeInsets.only(top: 45),
                 )
               ],
             ),
