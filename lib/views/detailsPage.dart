@@ -1,6 +1,8 @@
+import 'package:ecommerce_app/statemanagement/provider/cart_model.dart';
 import 'package:ecommerce_app/views/mycart.dart';
 import 'package:ecommerce_app/widgets/customButton.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsPage extends StatefulWidget {
   final String? title;
@@ -27,6 +29,10 @@ class _DetailsPageState extends State<DetailsPage> {
     double priceValue = (widget.price is int)
         ? (widget.price as int).toDouble()
         : (widget.price ?? 0);
+
+    final cartModel = Provider.of<CartModel>(context);
+    cartModel.setPrice(priceValue); // Update the price when the page loads
+
     return Scaffold(
       body: Stack(
         children: [
@@ -72,16 +78,13 @@ class _DetailsPageState extends State<DetailsPage> {
               right: 115,
             ),
             decoration: BoxDecoration(
-              //color: Colors.amber,
               borderRadius: BorderRadius.circular(59),
             ),
             child: ClipRRect(
-              borderRadius:
-                  BorderRadius.circular(59), // Matches container's borderRadius
+              borderRadius: BorderRadius.circular(59),
               child: Image.network(
                 widget.image ?? 'https://via.placeholder.com/150',
-                fit:
-                    BoxFit.cover, // Ensures the image fits within the container
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -90,7 +93,6 @@ class _DetailsPageState extends State<DetailsPage> {
             height: 629,
             margin: const EdgeInsets.only(top: 319),
             decoration: const BoxDecoration(
-              //color: Colors.amber,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -99,22 +101,18 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Column(
               children: [
                 Container(
-                  //color: Colors.blue,
                   width: 371,
                   height: 71.1,
-                  margin: const EdgeInsets.only(
-                    top: 25,
-                  ),
+                  margin: const EdgeInsets.only(top: 25),
                   child: Row(
                     children: [
                       SizedBox(
-                        //color: Colors.red,
                         width: 228,
                         height: 71.1,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(widget.category ?? "no category"),
+                            Text(widget.category ?? "No category"),
                             Flexible(
                               child: Text(
                                 widget.title ?? "No title",
@@ -128,7 +126,6 @@ class _DetailsPageState extends State<DetailsPage> {
                               ),
                             ),
                             SizedBox(
-                              //color: Colors.white,
                               width: 228,
                               height: 27,
                               child: Image.asset(
@@ -139,9 +136,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        width: 45,
-                      ),
+                      const SizedBox(width: 45),
                       SizedBox(
                         width: 98,
                         height: 71.1,
@@ -150,7 +145,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           children: [
                             Expanded(
                               child: Text(
-                                '\$$priceValue',
+                                '\$${cartModel.totalPrice.toStringAsFixed(2)}',
                                 style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w900,
@@ -159,9 +154,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            const SizedBox(
-                              width: 1,
-                            ),
+                            const SizedBox(width: 1),
                             const Text(
                               'USD',
                               style: TextStyle(
@@ -176,7 +169,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 Container(
-                  //color: Colors.red,
                   width: 349,
                   height: 46,
                   margin: const EdgeInsets.only(top: 28.9),
@@ -188,60 +180,48 @@ class _DetailsPageState extends State<DetailsPage> {
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(
-                                  0.5), // Shadow color with some opacity
-                              spreadRadius:
-                                  2, // How wide the shadow will spread
-                              blurRadius: 5, // The blur effect for the shadow
-                              offset: const Offset(
-                                  0, 3), // The position of the shadow (x, y)
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
                             ),
                           ],
-                          borderRadius: BorderRadius.circular(
-                              5), // Optional: if you want rounded corners
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                        width: 90,
+                        width: 110,
                         height: 25,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              //color: Colors.amber,
-                              width: 30,
-                              height: 25,
-                              child: Center(
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.remove),
-                                  padding: EdgeInsets.zero,
-                                ),
+                        child: Flexible(
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  cartModel.decreasePrice(priceValue);
+                                },
+                                icon: const Icon(Icons.remove),
+                                padding: EdgeInsets.zero,
                               ),
-                            ),
-                            const SizedBox(
-                              //color: Colors.amber,
-                              width: 30,
-                              height: 25,
-                              child: Center(
-                                child: Text(
-                                  '1',
-                                  style: TextStyle(
+                              SizedBox(
+                                width: 30,
+                                height: 25,
+                                child: Center(
+                                  child: Text(
+                                    '${cartModel.quantity}',
+                                    style: const TextStyle(
                                       fontSize: 18,
-                                      fontWeight: FontWeight.w900),
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              //color: Colors.amber,
-                              width: 30,
-                              height: 25,
-                              child: Center(
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.add),
-                                  padding: EdgeInsets.zero,
-                                ),
+                              IconButton(
+                                onPressed: () {
+                                  cartModel.increasePrice(priceValue);
+                                },
+                                icon: const Icon(Icons.add),
+                                padding: EdgeInsets.zero,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -260,7 +240,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 ),
                 Container(
-                  //color: Colors.red,
                   width: 349,
                   height: 103,
                   margin: const EdgeInsets.only(top: 26),
@@ -268,7 +247,6 @@ class _DetailsPageState extends State<DetailsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        //color: Colors.blue,
                         width: 75,
                         height: 24,
                         child: Text(
@@ -281,11 +259,10 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                       Expanded(
                         child: SizedBox(
-                          //color: Colors.pink,
                           width: 348,
                           height: 78,
                           child: Text(
-                            widget.description ?? 'no description',
+                            widget.description ?? 'No description',
                             style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
@@ -293,137 +270,6 @@ class _DetailsPageState extends State<DetailsPage> {
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  //color: Colors.red,
-                  width: 280,
-                  height: 77,
-                  margin: const EdgeInsets.only(
-                    top: 30,
-                    right: 104,
-                    left: 30,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        //color: Colors.blue,
-                        width: 75,
-                        height: 24,
-                        child: Center(
-                          child: Text(
-                            'SELECT SIZE',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800, fontSize: 10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 48,
-                            height: 48,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(6),
-                              ),
-                              color: Colors.blue,
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'S',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 48,
-                            height: 48,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(6),
-                              ),
-                              color: Color(0xFFF1F4FB),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'M',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 48,
-                            height: 48,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(6),
-                              ),
-                              color: Color(0xFFF1F4FB),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'L',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 48,
-                            height: 48,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(6),
-                              ),
-                              color: Color(0xFFF1F4FB),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'XL',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 48,
-                            height: 48,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(6),
-                              ),
-                              color: Color(0xFFF1F4FB),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'XXL',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      )
                     ],
                   ),
                 ),
@@ -435,13 +281,13 @@ class _DetailsPageState extends State<DetailsPage> {
                       MaterialPageRoute(
                         builder: (context) => MyCartPage(
                           image: widget.image,
-                          price: widget.price,
+                          price: cartModel.totalPrice,
                           title: widget.title,
                         ),
                       ),
                     );
                   },
-                  margin: EdgeInsets.only(top: 45),
+                  margin: const EdgeInsets.only(top: 45),
                 )
               ],
             ),
