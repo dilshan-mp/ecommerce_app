@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/views/mycart.dart';
+import 'package:ecommerce_app/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -426,34 +427,20 @@ class _DetailsPageState extends State<DetailsPage> {
                     ],
                   ),
                 ),
-                Container(
-                  width: 354,
-                  height: 54,
-                  margin: const EdgeInsets.only(top: 45, left: 30, right: 30),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyCartPage(
-                            image: widget.image,
-                            title: widget.title,
-                            price: widget.price,
-                          ),
+                CustomButton(
+                  buttonText: 'ADD TO CART',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyCartPage(
+                          image: widget.image,
+                          price: widget.price,
+                          title: widget.title,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6342E8),
-                      elevation: 0,
-                    ),
-                    child: const Text(
-                      'ADD TO CART',
-                      style: TextStyle(
-                        color: Colors.white,
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 )
               ],
             ),
