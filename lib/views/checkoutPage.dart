@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/views/successPage.dart';
+import 'package:ecommerce_app/widgets/customButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,7 +11,9 @@ class CheckOutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(Icons.arrow_back),
         ),
         title: const Text(
@@ -262,6 +266,18 @@ class CheckOutPage extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          CustomButton(
+            buttonText: 'USE THIS CARD',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SuccessPage(),
+                ),
+              );
+            },
+            margin: EdgeInsets.only(top: 20),
           )
         ],
       ),
