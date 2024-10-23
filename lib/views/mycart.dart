@@ -207,8 +207,13 @@ class _MyCartPageState extends State<MyCartPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CustomButton(
+              icon: const Icon(
+                Icons.exit_to_app,
+                color: Colors.white,
+              ),
               margin: const EdgeInsets.only(bottom: 30),
               buttonText: "GO TO CHECKOUT",
+              totalPrice: 135.96,
               onPressed: () {
                 Navigator.push(
                   context,
