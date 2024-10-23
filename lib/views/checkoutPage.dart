@@ -268,6 +268,10 @@ class CheckOutPage extends StatelessWidget {
             ],
           ),
           CustomButton(
+            icon: Icon(
+              Icons.payment,
+              color: Colors.white,
+            ),
             buttonText: 'USE THIS CARD',
             onPressed: () {
               Navigator.push(
