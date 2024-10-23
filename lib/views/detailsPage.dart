@@ -262,24 +262,27 @@ class _DetailsPageState extends State<DetailsPage> {
                   Container(
                     //color: Colors.red,
                     width: 280,
-                    height: 77,
+                    height: 80,
                     margin: const EdgeInsets.only(
                       top: 30,
                       right: 104,
-                      left: 30,
+                      left: 24,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
+                        Container(
                           //color: Colors.blue,
-                          width: 75,
-                          height: 24,
-                          child: Center(
-                            child: Text(
-                              'SELECT SIZE',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w800, fontSize: 10),
+                          width: 150,
+                          height: 25,
+                          child: const Center(
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 40),
+                              child: Text(
+                                'SELECT SIZE',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w800, fontSize: 18),
+                              ),
                             ),
                           ),
                         ),
@@ -291,7 +294,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           children: [
                             Container(
                               width: 48,
-                              height: 48,
+                              height: 50,
                               decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(6),
@@ -410,12 +413,28 @@ class _DetailsPageState extends State<DetailsPage> {
                         backgroundColor: const Color(0xFF6342E8),
                         elevation: 0,
                       ),
-                      child: const Text(
-                        'ADD TO CART',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.shopping_bag_outlined,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text(
+                            'ADD TO CARD',
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
                       ),
+                      // child: const Text(
+                      //   'ADD TO CART',
+                      //   style: TextStyle(
+                      //     color: Colors.white,
+                      //   ),
+                      // ),
                     ),
                   )
                 ],
