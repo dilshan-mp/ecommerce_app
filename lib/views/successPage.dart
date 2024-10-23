@@ -53,11 +53,19 @@ class SuccessPage extends StatelessWidget {
             ),
           ),
           CustomButton(
+            icon: Icon(
+              Icons.art_track,
+              color: Colors.white,
+            ),
             buttonText: "TRACK ORDER",
             onPressed: () {},
             margin: EdgeInsets.only(left: 47, right: 47, top: 40),
           ),
           CustomButton(
+            icon: Icon(
+              Icons.shopping_bag,
+              color: Colors.white,
+            ),
             buttonText: "CONTINUE SHOPING",
             onPressed: () {
               Navigator.push(
